@@ -745,3 +745,7 @@ p{
 .visible{
     visibility: visible;
 }
+
+.embed {
+    display: none;
+}

@@ -64,8 +64,6 @@
             <div class="container">
                 <!-- carousel inner -->
                 <div class="carousel-inner">
-
-
                     <!-- Stopwatch -->
                     <div class="stopwatch item active">
 
@@ -94,33 +92,38 @@
                             <div class="col-lg-6 text-center">
                                 <div class="animated" data-animation="fadeIn" data-animation-delay="500">
                                     <div class="boy">
+
                                         <div class="boy-building">
                                             <div class="hand"></div>
                                         </div>
+
                                         <div class="dog">
                                             <div class="tail"></div>
                                         </div>
                                     </div>
+                                    <audio controls="controls" preload="none">
+                                        <source src="./assets/background.mp3" type="audio/mpeg" />
+                                    </audio>
                                 </div>
                             </div>
                             <div id="questionBlock" class="col-lg-6 text-center">
                                 <div class="animated" data-animation="fadeIn" data-animation-delay="500">
                                     <div class="row">
                                         <div class="col-sm-12 text-center subscribe-text">
+                                            <h4 id="instruction">Please hit the play button so the boy can play along. </h4>
                                             <h3 class="animated" id="question" data-animation="fadeIn" data-animation-delay="600">
-                                                You're well aware that she's not a real dragon.
                                             </h3>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-offset-2 col-lg-2">
                                             <div class="footerbar animated" data-animation="fadeIn" data-animation-delay="500">
-                                                <input id="answerNo" onclick="changeQuestion()" type="button" class="btn btn-link" value="No 😭" >
+                                                <input id="answerNo" onclick="changeQuestion()" type="button" class="btn btn-link">
                                             </div>
                                         </div>
                                         <div class="col-lg-6 text-center">
                                             <div class="footerbar animated" data-animation="fadeIn" data-animation-delay="500">
-                                                <input id="answerYes" onclick="changeQuestion()" type="button" class="subscribe-submit" value="Yes" />
+                                                <input id="answerYes" onclick="changeQuestion()" type="button" class="subscribe-submit" style="min-width: 300px" value="Done. Now start the quiz" />
                                             </div>
                                         </div>
                                     </div>
@@ -324,6 +327,7 @@
     <script>
         var i = 0
         questions = [
+            "You're well aware that she's not a real dragon",
             "Ain't no spy either",
             "You're ok with the fact that her hair either badly needs a cut or is badly cut",
             "And when she's not green, she's yellow or yellowish",
@@ -347,6 +351,7 @@
             "...every time",
         ]
         answers = [
+            "Yes",
             "uh-huh",
             "Yes",
             "hm..",
@@ -367,16 +372,18 @@
             "...",
             "...",
             "...",
-            "Yeah",
+            "😊",
         ]
         answersNo = [
-            "uh-oh",
             "No",
             "",
+            "uh-oh",
+            "",
             "No",
-            "I will",
-            "I will",
+            "",
+            "",
             "No",
+            "",
             "",
             "",
             "No",
@@ -394,10 +401,11 @@
         ]
 
         function changeQuestion() {
+            document.getElementById("instruction").style.display = "none"
             document.getElementById("question").innerHTML = questions[i];
             document.getElementById("answerYes").value = answers[i];
             document.getElementById("answerNo").value = answersNo[i];
-            if (i == 21) {
+            if (i == 22) {
                 document.getElementById("resultText").style.display = "block"
                 document.getElementById("questionBlock").style.display = "none"
 
